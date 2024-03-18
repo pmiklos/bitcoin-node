@@ -1,0 +1,68 @@
+version: "3.7"
+
+services:
+
+  mempool-frontend:
+    depends_on:
+      - mempool-backend
+      - mempool-db
+    environment:
+      FRONTEND_HTTP_PORT: "8080"
+      BACKEND_MAINNET_HTTP_HOST: "mempool-backend"
+    image: ${APP_MEMPOOL_FRONTEND_IMAGE}
+    user: "1000:1000"
+    restart: on-failure
+    stop_grace_period: 15s
+    command: "./wait-for mempool-db:3306 --timeout=30 -- nginx -g 'daemon off;'"
+    ports:
+      - 9080:8080
+    networks:
+      - mempool
+
+  mempool-backend:
+    depends_on:
+      - bitcoind
+      - mempool-db
+    environment:
+      MEMPOOL_BACKEND: "none"
+      CORE_RPC_HOST: "${APP_BITCOIN_IP}"
+      CORE_RPC_PORT: "8332"
+      CORE_RPC_USERNAME: "mempool"
+      CORE_RPC_PASSWORD: "mempool" # we could create a secret file and load it as environment file
+      DATABASE_ENABLED: "true"
+      DATABASE_HOST: "mempool-db"
+      DATABASE_DATABASE: "mempool"
+      DATABASE_USERNAME: "mempool"
+      DATABASE_PASSWORD: "mempool"
+      STATISTICS_ENABLED: "true"
+    image: ${APP_MEMPOOL_BACKEND_IMAGE}
+    user: "1000:1000"
+    restart: on-failure
+    stop_grace_period: 30s
+    command: "./wait-for-it.sh mempool-db:3306 --timeout=30 --strict -- ./start.sh"
+    volumes:
+      - ${NODE_DATA_DIR}/mempool/data/backend:/backend/cache
+    networks:
+      - bitcoin
+      - mempool
+
+  mempool-db:
+    environment:
+      MYSQL_DATABASE: "mempool"
+      MYSQL_USER: "mempool"
+      MYSQL_PASSWORD: "mempool"
+      MYSQL_ROOT_PASSWORD: "admin"
+    image: mariadb:10.5.8
+    user: "1000:1000"
+    restart: on-failure
+    stop_grace_period: 1m
+    volumes:
+      - ${NODE_DATA_DIR}/mempool/data/mysql:/var/lib/mysql
+    networks:
+      - mempool
+
+networks:
+  mempool:
+    ipam:
+      config:
+        - subnet: 10.2.0.0/16

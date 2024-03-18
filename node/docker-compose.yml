@@ -1,0 +1,7 @@
+version: "3.7"
+
+networks:
+  bitcoin:
+    ipam:
+      config:
+        - subnet: "${NODE_BITCOIN_NETWORK}"

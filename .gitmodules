@@ -1,0 +1,6 @@
+[submodule "apps/bitcoind/docker"]
+	path = apps/bitcoind/docker
+	url = https://github.com/lncm/docker-bitcoind.git
+[submodule "apps/mempool/source"]
+	path = apps/mempool/source
+	url = https://github.com/mempool/mempool.git
