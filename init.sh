@@ -1,14 +1,19 @@
 #!/bin/bash -e
 
+DIR=$(dirname "$0")
+
+if [ ! -f "$DIR/.env" ]; then
+  echo "Creating .env file..."
+  cp -iv "$DIR"/{.env.default,.env}
+fi
+
 source .env
 
-# Source directory
-source_dir="apps/"
+APPS_DIR="$DIR/apps"
 
-# Destination directory
-destination_dir="${NODE_DATA_DIR}"
+mkdir -p "$NODE_DATA_DIR"
 
-mkdir -p $destination_dir
+echo "Creating app data folders..."
 
 # rsync folders matching the pattern */data/*
-rsync -avm --include='*/' --include='*/data/**' --exclude='*' "$source_dir" "$destination_dir"/
+rsync -avmn --include='*/' --include='*/data/**' --exclude='*' "$APPS_DIR"/ "$NODE_DATA_DIR"/
