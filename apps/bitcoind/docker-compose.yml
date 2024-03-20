@@ -3,7 +3,7 @@ version: "3.7"
 services:
 
   bitcoind:
-    image: "${APP_BITCOIN_IMAGE}"
+    image: "${APP_BITCOIND_IMAGE}"
     restart: unless-stopped
     stop_grace_period: 15m30s
     volumes:
@@ -12,13 +12,13 @@ services:
       - "127.0.0.1:8332:8332"
     networks:
       bitcoin:
-        ipv4_address: ${APP_BITCOIN_IP}
+        ipv4_address: ${APP_BITCOIND_IP}
     command:
       - "-debug=rpc"
       - "-txindex"
       - "-rpcbind=127.0.0.1"
       - "-rpcallowip=127.0.0.1"
-      - "-rpcbind=${APP_BITCOIN_IP}"
+      - "-rpcbind=${APP_BITCOIND_IP}"
       - "-rpcallowip=${NODE_BITCOIN_NETWORK}"
       - "-rpcauth=${APP_BITCOIND_USER_RPCAUTH}"
       - "-rpcauth=${APP_BITCOIND_MEMPOOL_RPCAUTH}"

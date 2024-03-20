@@ -1,7 +1,7 @@
 .PHONY: build clean
 
 build:
-	docker build -t $(APP_BITCOIN_IMAGE) $(APP_BITCOIN_DOCKER)
+	docker build -t $(APP_BITCOIND_IMAGE) $(APP_BITCOIND_DOCKER)
 
 clean:
-	docker rmi $(APP_BITCOIN_IMAGE)
+	docker rmi $(APP_BITCOIND_IMAGE)
