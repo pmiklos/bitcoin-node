@@ -16,4 +16,4 @@ mkdir -p "$NODE_DATA_DIR"
 echo "Creating app data folders..."
 
 # rsync folders matching the pattern */data/*
-rsync -avmn --include='*/' --include='*/data/**' --exclude='*' "$APPS_DIR"/ "$NODE_DATA_DIR"/
+rsync -avm --include='*/' --include='*/data/**' --exclude='*' "$APPS_DIR"/ "$NODE_DATA_DIR"/

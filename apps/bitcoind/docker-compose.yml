@@ -20,3 +20,5 @@ services:
       - "-rpcallowip=127.0.0.1"
       - "-rpcbind=${APP_BITCOIN_IP}"
       - "-rpcallowip=${NODE_BITCOIN_NETWORK}"
+      - "-rpcauth=${APP_BITCOIND_USER_RPCAUTH}"
+      - "-rpcauth=${APP_BITCOIND_MEMPOOL_RPCAUTH}"

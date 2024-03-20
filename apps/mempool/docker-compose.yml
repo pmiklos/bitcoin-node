@@ -28,17 +28,17 @@ services:
       CORE_RPC_HOST: "${APP_BITCOIN_IP}"
       CORE_RPC_PORT: "8332"
       CORE_RPC_USERNAME: "mempool"
-      CORE_RPC_PASSWORD: "mempool" # we could create a secret file and load it as environment file
+      CORE_RPC_PASSWORD: "${APP_MEMPOOL_BITCOIND_PASSWORD}"
       DATABASE_ENABLED: "true"
       DATABASE_HOST: "mempool-db"
       DATABASE_DATABASE: "mempool"
       DATABASE_USERNAME: "mempool"
-      DATABASE_PASSWORD: "mempool"
+      DATABASE_PASSWORD: "${APP_MEMPOOL_MYSQL_PASSWORD}"
       STATISTICS_ENABLED: "true"
     image: ${APP_MEMPOOL_BACKEND_IMAGE}
     user: "1000:1000"
     restart: on-failure
-    stop_grace_period: 30s
+    stop_grace_period: 15s
     command: "./wait-for-it.sh mempool-db:3306 --timeout=30 --strict -- ./start.sh"
     volumes:
       - ${NODE_DATA_DIR}/mempool/data/backend:/backend/cache
@@ -50,8 +50,8 @@ services:
     environment:
       MYSQL_DATABASE: "mempool"
       MYSQL_USER: "mempool"
-      MYSQL_PASSWORD: "mempool"
-      MYSQL_ROOT_PASSWORD: "admin"
+      MYSQL_PASSWORD: "${APP_MEMPOOL_MYSQL_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${APP_MEMPOOL_MYSQL_ROOT_PASSWORD}"
     image: mariadb:10.5.8
     user: "1000:1000"
     restart: on-failure
