@@ -1,7 +1,7 @@
 include .env
 export $(shell sed 's/=.*//' .env)
 
-SUBDIRS := apps
+SUBDIRS := node apps
 
 .PHONY: all init up down $(SUBDIRS)
 
@@ -16,6 +16,7 @@ init:
 up:
 	@docker compose -p $(PROJECT) \
 		-f node/docker-compose.yml \
+		-f node/haproxy/docker-compose.yml \
 		-f apps/bitcoind/docker-compose.yml \
 		-f apps/mempool/docker-compose.yml \
 		 up -d

@@ -61,8 +61,3 @@ services:
     networks:
       - mempool
 
-networks:
-  mempool:
-    ipam:
-      config:
-        - subnet: ${NODE_MEMPOOL_NETWORK}

@@ -9,3 +9,7 @@ networks:
     ipam:
       config:
         - subnet: "${NODE_BITCOIN_NETWORK}"
+  mempool:
+    ipam:
+      config:
+        - subnet: "${NODE_MEMPOOL_NETWORK}"

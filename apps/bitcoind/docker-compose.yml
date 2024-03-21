@@ -8,8 +8,6 @@ services:
     stop_grace_period: 15m30s
     volumes:
       - "${NODE_DATA_DIR}/bitcoind/data/bitcoin:/data/.bitcoin"
-    ports:
-      - "${NODE_BITCOIND_RPC_IP}:${NODE_BITCOIND_RPC_PORT}:8332"
     networks:
       bitcoin:
         ipv4_address: ${APP_BITCOIND_IP}
