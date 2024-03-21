@@ -1,6 +1,10 @@
 version: "3.7"
 
 networks:
+  default:
+    ipam:
+      config:
+        - subnet: "${NODE_DEFAULT_NETWORK}"
   bitcoin:
     ipam:
       config:
