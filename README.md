@@ -51,7 +51,7 @@ make all
 ### Start
 
 Before you start the node, it is recommended to review the `.env` file and make necessary customizations.
-Typically, you might want to change:
+Typically, you might want to change the below, but you can also just go with defaults and change them later:
 * `APP_BITCOIND_USER_RPCAUTH` - this is your username and password for use by your wallets when connecting to your self-hosted node. Use `rpcauth.py` to generate a password. Important that you will need to escape the `$` separator sign in the generated output as `$$`.
 * `APP_BITCOIND_MEMPOOL_RPCAUTH` - similar to the above, but used by the mempool app to fetch blockchain data
 * `APP_MEMPOOL_BITCOIND_PASSWORD` - set to the password generated above
