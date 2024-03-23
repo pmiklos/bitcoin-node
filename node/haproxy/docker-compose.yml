@@ -9,6 +9,6 @@ services:
       bitcoin:
       mempool:
     ports:
-      - "${NODE_BITCOIND_RPC_IP}:${NODE_BITCOIND_RPC_PORT}:8332"
+      - "${NODE_HAPROXY_EXPOSE_IP}:${NODE_HAPROXY_EXPOSE_BITCOIND_RPC_PORT}:8332"
     sysctls:
       net.ipv4.ip_unprivileged_port_start: 0
