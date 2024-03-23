@@ -12,8 +12,15 @@ This project was inspired by [Umbrel](https://github.com/getumbrel).
 **Endpoints**
 
 The following endpoints will be exposed on all network interfaces unless you change `$NODE_HAPROXY_EXPOSE_IP`.
-* http://localhost:8332 - bitcoind RPC API
-* http://localhost:8080 - mempool blockchain explorer
+* http://bitcoind.local:8332 - bitcoind RPC API
+* http://mempool.local - mempool blockchain explorer
+
+You will have to add something like below to `/etc/hosts` on the machines you want to connect to your bitcoin node:
+
+```text
+# replace 192.168.1.2 with the local area network IP of your Bitcoin node
+192.168.1.2 bitcoind.local mempool.local
+```
 
 ## Setup
 
