@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 DIR=$(dirname "$0")
+APPS_DIR="$DIR/apps"
 
 if [ ! -f "$DIR/.env" ]; then
   echo "Creating .env file..."
@@ -9,11 +10,10 @@ fi
 
 source .env
 
-APPS_DIR="$DIR/apps"
-
-mkdir -p "$NODE_DATA_DIR"
-
 echo "Creating app data folders..."
-
-# rsync folders matching the pattern */data/*
+mkdir -p "$NODE_DATA_DIR"
 rsync -avm --include='*/' --include='*/data/**' --exclude='*' "$APPS_DIR"/ "$NODE_DATA_DIR"/
+
+echo "Initializing git submodules (this can take a minute or two)..."
+git submodule init
+git submodule update
