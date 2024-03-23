@@ -9,6 +9,11 @@ This project was inspired by [Umbrel](https://github.com/getumbrel).
 * [bitcoind](https://github.com/lncm/docker-bitcoind) - Bitcoin Core, a full Bitcoin node
 * [mempool](https://github.com/mempool/mempool) - fully-featured mempool visualizer, explorer and API service
 
+**Endpoints**
+
+The following endpoints will be exposed on all network interfaces unless you change `$NODE_HAPROXY_EXPOSE_IP`.
+* http://localhost:8332 - bitcoind RPC API
+* http://localhost:8080 - mempool blockchain explorer
 
 ## Setup
 
