@@ -4,7 +4,7 @@ build: init build-frontend build-backend
 clean: clean-frontend clean-backend
 
 init:
-	cd source && ./docker/init.sh
+	cd source && test -f backend/Dockerfile || ./docker/init.sh
 
 build-frontend:
 	docker build -t $(APP_MEMPOOL_FRONTEND_IMAGE) -f source/docker/frontend/Dockerfile source/frontend
