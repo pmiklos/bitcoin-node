@@ -10,13 +10,11 @@ services:
       - "${NODE_DATA_DIR}/bitcoind/data/bitcoin:/data/.bitcoin"
     networks:
       bitcoin:
-        ipv4_address: ${APP_BITCOIND_IP}
     command:
       - "-debug=rpc"
       - "-txindex"
-      - "-rpcbind=127.0.0.1"
-      - "-rpcbind=${APP_BITCOIND_IP}"
+      - "-rpcbind=0.0.0.0"
       - "-rpcallowip=127.0.0.1"
-      - "-rpcallowip=${NODE_BITCOIN_NETWORK}" # TODO need HAProxy
+      - "-rpcallowip=${NODE_BITCOIN_NETWORK}"
       - "-rpcauth=${APP_BITCOIND_USER_RPCAUTH}"
       - "-rpcauth=${APP_BITCOIND_MEMPOOL_RPCAUTH}"

@@ -4,13 +4,8 @@ services:
 
   haproxy:
     image: "${NODE_HAPROXY_IMAGE}"
-    environment:
-      NODE_HAPROXY_IP: ${NODE_HAPROXY_IP}
-      APP_BITCOIND_IP: ${APP_BITCOIND_IP}
-      APP_BITCOIND_RPC_PORT: 8332
     networks:
       a0_proxynet:
-        ipv4_address: ${NODE_HAPROXY_IP}
       bitcoin:
       mempool:
     ports:

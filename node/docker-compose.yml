@@ -6,7 +6,7 @@ networks:
   a0_proxynet:
     ipam:
       config:
-        - subnet: "${NODE_DEFAULT_NETWORK}"
+        - subnet: "${NODE_HAPROXY_NETWORK}"
   bitcoin:
     ipam:
       config:
