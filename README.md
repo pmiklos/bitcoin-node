@@ -2,6 +2,13 @@
 
 ### Initialize
 
+Initialize sub-modules:
+```bash
+git submodule init
+git submodule update
+```
+
+Initialize project:
 ```bash
 make init
 ```
