@@ -8,13 +8,12 @@ services:
       NODE_HAPROXY_IP: ${NODE_HAPROXY_IP}
       APP_BITCOIND_IP: ${APP_BITCOIND_IP}
       APP_BITCOIND_RPC_PORT: 8332
-      NODE_BITCOIND_RPC_PORT: ${NODE_BITCOIND_RPC_PORT}
     networks:
-      default:
+      a0_proxynet:
         ipv4_address: ${NODE_HAPROXY_IP}
       bitcoin:
       mempool:
     ports:
-      - "${NODE_BITCOIND_RPC_IP}:${NODE_BITCOIND_RPC_PORT}:${NODE_BITCOIND_RPC_PORT}"
+      - "${NODE_BITCOIND_RPC_IP}:${NODE_BITCOIND_RPC_PORT}:8332"
     sysctls:
       net.ipv4.ip_unprivileged_port_start: 0

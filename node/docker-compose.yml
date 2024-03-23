@@ -1,7 +1,9 @@
 version: "3.7"
 
 networks:
-  default:
+  # port bindings happen on the first network alphabetical order
+  # HAProxy connects to all networks but binds only on the proxynet
+  a0_proxynet:
     ipam:
       config:
         - subnet: "${NODE_DEFAULT_NETWORK}"
