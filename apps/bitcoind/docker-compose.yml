@@ -11,8 +11,9 @@ services:
     networks:
       bitcoin:
     command:
-      - "-debug=rpc"
-      - "-txindex"
+      - "-listen=1"
+      - "-txindex=1"
+      - "-prune=0"
       - "-rpcbind=0.0.0.0"
       - "-rpcallowip=127.0.0.1"
       - "-rpcallowip=${NODE_BITCOIN_NETWORK}"

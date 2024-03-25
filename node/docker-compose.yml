@@ -15,3 +15,7 @@ networks:
     ipam:
       config:
         - subnet: "${NODE_MEMPOOL_NETWORK}"
+  electrum:
+    ipam:
+      config:
+        - subnet: "${NODE_ELECTRS_NETWORK}"

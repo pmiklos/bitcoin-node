@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  electrs:
+    image: "${APP_ELECTRS_IMAGE}"
+    depends_on:
+      - bitcoind
+    restart: always
+    environment:
+      ELECTRS_LOG_FILTERS: "INFO"
+      ELECTRS_NETWORK: "bitcoin"
+      ELECTRS_DAEMON_RPC_ADDR: "bitcoind:8332"
+      ELECTRS_DAEMON_P2P_ADDR: "bitcoind:8333"
+      ELECTRS_ELECTRUM_RPC_ADDR: "0.0.0.0:50001"
+      ELECTRS_SERVER_BANNER: "Electrs (${APP_ELECTRS_VERSION})"
+      ELECTRS_DB_DIR: "/data/db"
+      ELECTRS_COOKIE_FILE: "/data/.bitcoin/.cookie"
+    volumes:
+      - "${NODE_DATA_DIR}/bitcoind/data/bitcoin:/data/.bitcoin:ro"
+      - "${NODE_DATA_DIR}/electrs/data/db:/data/db"
+    networks:
+      electrum:
+      bitcoin:

@@ -7,12 +7,15 @@ services:
     depends_on:
       - bitcoind
       - mempool
+      - electrs
     networks:
       a0_proxynet:
       bitcoin:
       mempool:
+      electrum:
     ports:
       - "${NODE_HAPROXY_EXPOSE_IP}:${NODE_HAPROXY_EXPOSE_BITCOIND_RPC_PORT}:8332"
+      - "${NODE_HAPROXY_EXPOSE_IP}:${NODE_HAPROXY_EXPOSE_ELECTRS_RPC_PORT}:50001"
       - "${NODE_HAPROXY_EXPOSE_IP}:${NODE_HAPROXY_EXPOSE_HTTP_PORT}:80"
     sysctls:
       net.ipv4.ip_unprivileged_port_start: 0

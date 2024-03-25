@@ -19,6 +19,7 @@ up:
 		-f node/haproxy/docker-compose.yml \
 		-f apps/bitcoind/docker-compose.yml \
 		-f apps/mempool/docker-compose.yml \
+		-f apps/electrs/docker-compose.yml \
 		 up -d
 
 down:
