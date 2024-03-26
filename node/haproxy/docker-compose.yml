@@ -9,7 +9,9 @@ services:
       - mempool
       - electrs
     networks:
-      a0_proxynet:
+      a0_external:
+        aliases:
+          - haproxy.external.local
       bitcoin:
       mempool:
       electrum:

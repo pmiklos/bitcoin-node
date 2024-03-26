@@ -10,6 +10,8 @@ services:
       - "${NODE_DATA_DIR}/bitcoind/data/bitcoin:/data/.bitcoin"
     networks:
       bitcoin:
+        aliases:
+          - bitcoind.bitcoin.local
     command:
       - "-listen=1"
       - "-txindex=1"

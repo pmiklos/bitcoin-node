@@ -2,11 +2,11 @@ version: "3.7"
 
 networks:
   # port bindings happen on the first network alphabetical order
-  # HAProxy connects to all networks but binds only on the proxynet
-  a0_proxynet:
+  # HAProxy connects to all networks but binds only on the external network
+  a0_external:
     ipam:
       config:
-        - subnet: "${NODE_HAPROXY_NETWORK}"
+        - subnet: "${NODE_EXTERNAL_NETWORK}"
   bitcoin:
     ipam:
       config:
