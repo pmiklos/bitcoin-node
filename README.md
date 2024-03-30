@@ -7,19 +7,21 @@ This project was inspired by [Umbrel](https://github.com/getumbrel).
 
 **Applications:**
 * [bitcoind](https://github.com/lncm/docker-bitcoind) - Bitcoin Core, a full Bitcoin node
+* [electrs](https://github.com/romanz/electrs) - efficient Electrum Server implemented in Rust
 * [mempool](https://github.com/mempool/mempool) - fully-featured mempool visualizer, explorer and API service
 
 **Endpoints**
 
 The following endpoints will be exposed on all network interfaces unless you change `$NODE_HAPROXY_EXPOSE_IP`.
 * http://bitcoind.local:8332 - bitcoind RPC API
+* http://electrs.local:50001 - Electrum JSON RPC API
 * http://mempool.local - mempool blockchain explorer
 
 You will have to add something like below to `/etc/hosts` on the machines you want to connect to your bitcoin node:
 
 ```text
 # replace 192.168.1.2 with the local area network IP of your Bitcoin node
-192.168.1.2 bitcoind.local mempool.local
+192.168.1.2 bitcoind.local electrs.local mempool.local
 ```
 
 ## Setup
