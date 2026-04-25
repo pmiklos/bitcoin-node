@@ -3,12 +3,10 @@
 DIR=$(dirname "$0")
 APPS_DIR="$DIR/apps"
 
-if [ ! -f "$DIR/.env" ]; then
-  echo "Creating .env file..."
-  cp -iv "$DIR"/{.env.default,.env}
+if [[ -z "$NODE_DATA_DIR" ]]; then
+	echo "ERROR: Environment is not set. Make sure direnv is configured and allowed" >&2
+	exit 1
 fi
-
-source .env
 
 echo "Creating app data folders..."
 mkdir -p "$NODE_DATA_DIR"

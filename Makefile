@@ -1,6 +1,3 @@
-include .env
-export $(shell sed 's/=.*//' .env)
-
 SUBDIRS := node apps
 
 .PHONY: all init up down $(SUBDIRS)

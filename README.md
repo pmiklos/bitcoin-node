@@ -32,6 +32,7 @@ You will have to add something like below to `/etc/hosts` on the machines you wa
 * [Docker Compose](https://docs.docker.com/compose/install/) - for orchestrating all applications of a self-hosted Bitcoin node
 * [git](https://git-scm.com/) - typically installed as an OS package
 * [make](https://www.gnu.org/software/make/) - typically installed as an OS package
+* [direnv](https://direnv.net/) - typically installed as an OS package
 
 ### Limitations
 
@@ -41,15 +42,18 @@ with 1000:1000 uid and gid. If you run linux as a solo user this might already b
 
 ### Initialization
 
-Before building and running the node, initialize the project:
+Before building and running the node, initialize the project. This will create the app data directory structure and clone all git submodules for building the app docker images from source.
 ```bash
 make init
 ```
 
-This will create the app data directory structure and copy the `.env.default` to `.env`.
-Make any customizations in the `.env` file you need.
+Make sure you set up `direnv` in your shell (see `man direnv`) and that the environment variables are automatically loaded from `.envrc`.
 
-It will also clone all git submodules for building the app docker images from source.
+Customizations in envrionment variables can be added in a local `.env` file, for example:
+```
+APP_BITCOIND_VERSION=28.0
+APP_BITCOIND_USER_RPCAUTH=user:9999111919191....
+```
 
 ### Build
 
