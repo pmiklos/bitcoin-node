@@ -6,7 +6,8 @@ so you don't have to trust binary package maintainers.
 This project was inspired by [Umbrel](https://github.com/getumbrel).
 
 **Applications:**
-* [bitcoind](https://github.com/lncm/docker-bitcoind) - Bitcoin Core, a full Bitcoin node
+* [bitcoincore](https://github.com/lncm/docker-bitcoind) - Bitcoin Core, a full Bitcoin node
+* [bitcoinknots](https://github.com/bitcoinknots/bitcoin) - Bitcoin Knots, an alternative implementation of Bitcoin Core
 * [electrs](https://github.com/romanz/electrs) - efficient Electrum Server implemented in Rust
 * [mempool](https://github.com/mempool/mempool) - fully-featured mempool visualizer, explorer and API service
 
@@ -30,6 +31,7 @@ You will have to add something like below to `/etc/hosts` on the machines you wa
 
 * [Docker](https://docs.docker.com/get-docker/) - for building application images locally and running them in containers
 * [Docker Compose](https://docs.docker.com/compose/install/) - for orchestrating all applications of a self-hosted Bitcoin node
+* [Docker Buildx](https://github.com/docker/buildx#installing) - for building application images locally in a more efficient way
 * [git](https://git-scm.com/) - typically installed as an OS package
 * [make](https://www.gnu.org/software/make/) - typically installed as an OS package
 * [direnv](https://direnv.net/) - typically installed as an OS package
@@ -51,7 +53,7 @@ Make sure you set up `direnv` in your shell (see `man direnv`) and that the envi
 
 Customizations in envrionment variables can be added in a local `.env` file, for example:
 ```
-APP_BITCOIND_VERSION=28.0
+APP_BITCOINCORE_VERSION=28.0
 APP_BITCOIND_USER_RPCAUTH=user:9999111919191....
 ```
 

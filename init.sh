@@ -10,7 +10,7 @@ fi
 
 echo "Creating app data folders..."
 mkdir -p "$NODE_DATA_DIR"
-rsync -avm --include='*/' --include='*/data/**' --exclude='*' "$APPS_DIR"/ "$NODE_DATA_DIR"/
+rsync -avm --include='/*/' --include='/*/data/' --include='/*/data/**' --exclude='*' "$APPS_DIR"/ "$NODE_DATA_DIR"/
 
 echo "Initializing git submodules (this can take a minute or two)..."
 git submodule init
