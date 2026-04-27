@@ -3,7 +3,7 @@ version: "3.7"
 services:
 
   bitcoind:
-    image: "${APP_BITCOIND_IMAGE}"
+    image: "${APP_BITCOINCORE_IMAGE}"
     restart: unless-stopped
     stop_grace_period: 15m30s
     volumes:
