@@ -1,4 +1,4 @@
-SUBDIRS := bitcoind mempool electrs
+SUBDIRS := bitcoincore bitcoinknots mempool electrs
 
 .PHONY: all $(SUBDIRS)
 
