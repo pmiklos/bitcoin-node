@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+
+  datumgateway:
+    image: "${APP_DATUMGATEWAY_IMAGE}"
+    user: "1000:1000"
+    restart: unless-stopped
+    depends_on:
+      - bitcoind
+    volumes:
+      - "${NODE_DATA_DIR}/datumgateway/data/config:/app/config"
+      - "${NODE_DATA_DIR}/bitcoind/data/bitcoin:/var/run/bitcoin:ro"
+    networks:
+      bitcoin:
+        aliases:
+          - datumgateway.bitcoin.local
+    ports:
+      - "23334:23334"
+      - "7152:7152"

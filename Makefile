@@ -16,6 +16,7 @@ up:
 		-f node/haproxy/docker-compose.yml \
 		$(if $(filter yes,$(APP_BITCOINCORE_ENABLED)),-f apps/bitcoincore/docker-compose.yml) \
 		$(if $(filter yes,$(APP_BITCOINKNOTS_ENABLED)),-f apps/bitcoinknots/docker-compose.yml) \
+		$(if $(filter yes,$(APP_DATUMGATEWAY_ENABLED)),-f apps/datumgateway/docker-compose.yml) \
 		-f apps/mempool/docker-compose.yml \
 		-f apps/electrs/docker-compose.yml \
 		 up -d

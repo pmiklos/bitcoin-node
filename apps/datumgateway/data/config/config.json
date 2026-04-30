@@ -1,0 +1,10 @@
+{
+	"bitcoind": {
+		"rpccookiefile": "/var/run/bitcoin/.cookie",
+		"rpcurl": "http://bitcoind.bitcoin.local:8332"
+	},
+	"mining": {
+		"pool_address": "changeit",
+		"coinbase_tag_secondary": "DATUM User (changit)"
+	}
+}

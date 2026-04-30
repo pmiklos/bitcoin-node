@@ -7,3 +7,6 @@
 [submodule "apps/bitcoinknots/source"]
 	path = apps/bitcoinknots/source
 	url = https://github.com/bitcoinknots/bitcoin.git
+[submodule "apps/datumgateway/source"]
+	path = apps/datumgateway/source
+	url = https://github.com/OCEAN-xyz/datum_gateway.git
