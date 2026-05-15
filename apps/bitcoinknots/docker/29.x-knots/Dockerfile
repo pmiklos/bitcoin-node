@@ -169,7 +169,8 @@ RUN cmake -B build \
     -DREDUCE_EXPORTS=ON \
     -DINSTALL_MAN=OFF \
     -DWITH_ZMQ=ON \
-    -DWITH_CCACHE=OFF
+    -DWITH_CCACHE=OFF \
+    -DRDTS_CONSENT=IMPLICIT # BIP110
 
 RUN cmake --build build -j$(( $(nproc) + 1 ))
 RUN cmake --install build
