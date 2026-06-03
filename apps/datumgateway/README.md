@@ -116,7 +116,7 @@ Location: `$NODE_DATA_DIR/datumgateway/data/config/config.json`
 
 *Exposed ports:*
 * `23334` - default Stratum TCP endpoint to which the hasher connects to, it must be exposed on the public internet
-* `7152` -  Your DATUM Gateway admin UI, useful to check status and mining activity 
+* `7152` (Internal) -  Your DATUM Gateway admin UI, accessible externally via HAProxy at http://datumgateway.local 
 
 
 ### Bitcoind
