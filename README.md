@@ -47,10 +47,10 @@ make init
 
 Make sure you set up `direnv` in your shell (see `man direnv`) and that the environment variables are automatically loaded from `.envrc`.
 
-Customizations in envrionment variables can be added in a local `.env` file, for example:
+Customizations in environment variables can be added in a local `.env` file, for example:
 ```
 APP_BITCOINCORE_VERSION=28.0
-APP_BITCOIND_USER_RPCAUTH=user:9999111919191....
+APP_BITCOIND_USER_RPCAUTH='user:9999111919191....'
 ```
 
 ### Build
@@ -68,7 +68,7 @@ make all
 
 Before you start the node, it is recommended to review the `.env` file and make necessary customizations.
 Typically, you might want to change the below, but you can also just go with defaults and change them later:
-* `APP_BITCOIND_USER_RPCAUTH` - this is your username and password for use by your wallets when connecting to your self-hosted node. Use `rpcauth.py` to generate a password. Important that you will need to escape the `$` separator sign in the generated output as `$$`.
+* `APP_BITCOIND_USER_RPCAUTH` - this is your username and password for use by your wallets when connecting to your self-hosted node. Use `rpcauth.py` to generate a password. Important to quote the value with single quotes otherwise the `$` sign in the generated password will be interpreted incorrectly.
 * `APP_BITCOIND_MEMPOOL_RPCAUTH` - similar to the above, but used by the mempool app to fetch blockchain data
 * `APP_MEMPOOL_BITCOIND_PASSWORD` - set to the password generated above
 
