@@ -19,12 +19,7 @@ The following endpoints will be exposed on all network interfaces unless you cha
 * http://mempool.local - mempool blockchain explorer
 * http://datumgateway.local - DATUM Gateway admin UI
 
-You will have to add something like below to `/etc/hosts` on the machines you want to connect to your bitcoin node:
-
-```text
-# replace 192.168.1.2 with the local area network IP of your Bitcoin node
-192.168.1.2 bitcoind.local electrs.local mempool.local datumgateway.local
-```
+See also mDNS configuration further below.
 
 ## Setup
 
@@ -90,3 +85,20 @@ The application data will be kept intact under `$NODE_DATA_DIR` (or `~/.bitcoin-
 ```bash
 make down
 ```
+
+### Local DNS Resolution (mDNS)
+
+This project has built-in **mDNS (Multicast DNS) support**. If your client computer (macOS, Windows, or Linux with Avahi/systemd-resolved) supports mDNS, these endpoints will resolve automatically on your local network without any extra configuration.
+
+Typically, you want to advertise the service names on your local network. For exmaple, if the IP address of your Bitcoin Node is 192.168.1.100 then you would set the following in your `.env` file: 
+```bash
+NODE_MDNS_ADVERTISE_IP=192.168.1.100
+```
+NOTE: leaving `NODE_MDNS_ADVERTISE_IP` at 0.0.0.0 (default), the mDNS service will stay inactive.
+
+If your network or client devices do not support mDNS, you will have to manually add something like below to `/etc/hosts` on the machines you want to connect to your bitcoin node:
+
+```text
+192.168.1.100 bitcoind.local electrs.local mempool.local datumgateway.local
+```
+

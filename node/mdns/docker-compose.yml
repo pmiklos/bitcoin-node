@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+
+  mdns:
+    image: "${NODE_MDNS_IMAGE}"
+    network_mode: "host"
+    restart: on-failure
+    environment:
+      MDNS_HOSTS: "${NODE_MDNS_HOSTS}"
+      MDNS_ADVERTISE_IP: "${NODE_MDNS_ADVERTISE_IP}"

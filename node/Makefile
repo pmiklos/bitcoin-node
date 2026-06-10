@@ -1,4 +1,4 @@
-SUBDIRS := haproxy
+SUBDIRS := haproxy mdns
 
 .PHONY: all $(SUBDIRS)
 
