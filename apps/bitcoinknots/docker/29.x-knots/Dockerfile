@@ -170,7 +170,7 @@ RUN cmake -B build \
     -DINSTALL_MAN=OFF \
     -DWITH_ZMQ=ON \
     -DWITH_CCACHE=OFF \
-    -DRDTS_CONSENT=IMPLICIT # BIP110
+    -DRDTS_CONSENT=RUNTIME_CHECK # BIP110
 
 RUN cmake --build build -j$(( $(nproc) + 1 ))
 RUN cmake --install build
