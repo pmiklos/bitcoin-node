@@ -2,7 +2,7 @@
 
 build:
 ifeq ($(APP_BITCOINKNOTS_ENABLED),yes)
-	docker buildx build --load --build-arg VERSION=${APP_BITCOINKNOTS_VERSION} -t $(APP_BITCOINKNOTS_IMAGE) $(APP_BITCOINKNOTS_DOCKER)
+	docker buildx build --load --build-arg VERSION=${APP_BITCOINKNOTS_VERSION} --build-arg RDTS_CONSENT=${APP_BITCOINKNOTS_RDTS_CONSENT} -t $(APP_BITCOINKNOTS_IMAGE) $(APP_BITCOINKNOTS_DOCKER)
 endif
 
 clean:

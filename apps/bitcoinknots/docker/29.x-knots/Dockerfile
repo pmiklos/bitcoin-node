@@ -20,6 +20,9 @@ ARG SOURCE=release
 #   NOTE: When compiled here total execution time exceeds allowed CI limits, so pre-built one is used by default
 ARG BDB_SOURCE=prebuilt
 
+# RDTS (BIP-110) consent
+ARG RDTS_CONSENT=IMPLICIT
+
 
 
 #
@@ -125,6 +128,7 @@ FROM alpine:${VER_ALPINE} AS builder
 
 ARG VERSION
 ARG SOURCE
+ARG RDTS_CONSENT
 
 RUN --mount=type=cache,target=/var/cache/apk \
     apk add --no-cache \
@@ -170,7 +174,7 @@ RUN cmake -B build \
     -DINSTALL_MAN=OFF \
     -DWITH_ZMQ=ON \
     -DWITH_CCACHE=OFF \
-    -DRDTS_CONSENT=RUNTIME_CHECK # BIP110
+    -DRDTS_CONSENT=${RDTS_CONSENT} # BIP110
 
 RUN cmake --build build -j$(( $(nproc) + 1 ))
 RUN cmake --install build
