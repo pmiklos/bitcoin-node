@@ -6,7 +6,7 @@ so you don't have to trust binary package maintainers.
 This project was inspired by [Umbrel](https://github.com/getumbrel).
 
 **Applications:**
-* [bitcoincore](https://github.com/lncm/docker-bitcoind) - Bitcoin Core, a full Bitcoin node
+* [bitcoincore](https://github.com/bitcoin/bitcoin) - Bitcoin Core, a full Bitcoin node
 * [bitcoinknots](https://github.com/bitcoinknots/bitcoin) - Bitcoin Knots, an alternative implementation of Bitcoin Core
 * [electrs](https://github.com/romanz/electrs) - efficient Electrum Server implemented in Rust
 * [mempool](https://github.com/mempool/mempool) - fully-featured mempool visualizer, explorer and API service
