@@ -6,6 +6,8 @@ services:
     depends_on:
       - bitcoind
     restart: always
+    sysctls:
+      net.ipv4.tcp_tw_reuse: 1
     environment:
       ELECTRS_LOG_FILTERS: "INFO"
       ELECTRS_NETWORK: "bitcoin"
