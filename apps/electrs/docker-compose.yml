@@ -10,7 +10,6 @@ services:
       ELECTRS_LOG_FILTERS: "INFO"
       ELECTRS_NETWORK: "bitcoin"
       ELECTRS_DAEMON_RPC_ADDR: "bitcoind.bitcoin.local:8332"
-      ELECTRS_DAEMON_P2P_ADDR: "bitcoind.bitcoin.local:8333"
       ELECTRS_ELECTRUM_RPC_ADDR: "electrs.electrum.local:50001"
       ELECTRS_SERVER_BANNER: "Electrs (${APP_ELECTRS_VERSION})"
       ELECTRS_DB_DIR: "/data/db"

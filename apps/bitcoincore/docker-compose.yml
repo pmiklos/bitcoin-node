@@ -16,6 +16,7 @@ services:
       - "-listen=1"
       - "-txindex=1"
       - "-prune=0"
+      - "-rest=1"
       - "-rpcbind=0.0.0.0"
       - "-rpcallowip=127.0.0.1"
       - "-rpcallowip=${NODE_BITCOIN_NETWORK}"
